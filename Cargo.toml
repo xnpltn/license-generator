@@ -13,3 +13,4 @@ ureq = { version = "2.4.0", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 clap = { version = "4.5.3", features = ["derive"] }
 dialoguer = { version = "0.10.0", features = ["fuzzy-select"] }
+colour = "2.1.0"

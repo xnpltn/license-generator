@@ -40,13 +40,21 @@ pub struct Licenses {
 
 impl Licenses {
     // fetch all licenses from github
-    pub fn fetch_licenses() -> Licenses {
-        let body: Vec<License> = match ureq::get("https://api.github.com/licenses").call() {
-            Ok(res) => res.into_json().unwrap(),
-            Err(error) => panic!("Unable to fetch licenses: {}", error),
+    pub fn fetch_licenses() -> Result<Licenses, String> {
+        let response = ureq::get("https://api.github.com/licenses").call();
+
+        let body = match response {
+            Ok(res) => match res.into_json::<Vec<License>>() {
+                Ok(data) => Ok(data),
+                Err(err) => Err(format!("Error getting data: {}", err)),
+            },
+            Err(error) => Err(format!("Unable to fetch licenses: {}", error)),
         };
 
-        Licenses { license: body }
+        match body {
+            Ok(licenses) => Ok(Licenses { license: licenses }),
+            Err(err) => Err(err), // Forward the error message
+        }
     }
 
     pub fn get_license_names(&self) -> Vec<String> {
