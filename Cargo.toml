@@ -1,5 +1,5 @@
 [package]
-name = "gen-license"
+name = "lingen"
 version = "0.2.0"
 edition = "2021"
 repository = "https://github.com/rithulkamesh/gen-license"
