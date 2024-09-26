@@ -1,6 +1,7 @@
 use serde::Deserialize;
 
 // all structs are from https://api.github.com/licenses
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct License {
     pub key: String,
@@ -10,6 +11,7 @@ pub struct License {
     pub node_id: String,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct LicenseContent {
     pub key: String,

@@ -1,5 +1,3 @@
-use colour::{green_ln_bold, red_ln_bold, yellow_ln_bold};
-use std::process;
 mod helpers;
 mod license;
 
